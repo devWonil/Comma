@@ -33,9 +33,9 @@ public class UserService {
 		return 1;
 	}
 
-	@Transactional(readOnly = true)
-	public User login(User user) {
-		// repository select 요청
-		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-	}
+//	@Transactional(readOnly = true)
+//	public User login(User user) {
+//		// repository select 요청
+//		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//	}
 }
