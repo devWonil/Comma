@@ -2,33 +2,28 @@ package com.JMThouseWeb.JMThouse.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.JMThouseWeb.JMThouse.dto.ResponseDto;
-import com.JMThouseWeb.JMThouse.model.RoleType;
 import com.JMThouseWeb.JMThouse.model.User;
 import com.JMThouseWeb.JMThouse.service.UserService;
 
-
 @RestController
-public class UserApiController  {
+public class UserApiController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
 
-	@PostMapping("/api/user")
-	public ResponseDto<Integer> save(@RequestBody User user) {
-		// DB (validation) ...
-		System.out.println("UserApiController 호출됨");
-		user.setRole(RoleType.GUEST);
-		int result = userService.saveUser(user);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
-	}
-	
-	// /blog/api/user/login
-	
 //	@PostMapping("/api/user/login")
 //	public ResponseDto<Integer> login(@RequestBody User user, HttpSession httpSession){
 //		System.out.println("login 호출됨");
@@ -42,4 +37,15 @@ public class UserApiController  {
 //		
 //		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 //	}
+
+	@PutMapping("/user/info")
+	public ResponseDto<Integer> updateUserInfo(@RequestBody User user) {
+		userService.updateUserInfo(user);
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+
 }

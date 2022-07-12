@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.JMThouseWeb.JMThouse.model.Reply;
 import com.JMThouseWeb.JMThouse.model.Review;
+import com.JMThouseWeb.JMThouse.model.User;
+import com.JMThouseWeb.JMThouse.repository.ReplyRepository;
 import com.JMThouseWeb.JMThouse.repository.ReviewRepository;
 
 @Service
@@ -15,9 +17,13 @@ public class ReviewService {
 
 	@Autowired
 	private ReviewRepository reviewRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 
 	@Transactional
-	public void postReview(Review review) {
+	public void postReview(Review review, User user) {
+		review.setGuestId(user);
 		reviewRepository.save(review);
 	}
 
@@ -35,17 +41,15 @@ public class ReviewService {
 	}
 
 	@Transactional
-	public Reply addReply(int reviewId, Reply requestReply) {
-		// TODO
+	public Reply addReply(int reviewId, Reply requestReply, User user) {
 		Review reviewEntity = reviewRepository.findById(reviewId).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 리뷰는 존재하지 않습니다.");
 		});
 
 		requestReply.setReviewId(reviewEntity);
 
-		//Reply 엔티티 생성해서 save
-
-		return null;
+		Reply replyEntity = replyRepository.save(requestReply);
+		return replyEntity;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.JMThouseWeb.JMThouse.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.JMThouseWeb.JMThouse.auth.PrincipalDetail;
 import com.JMThouseWeb.JMThouse.dto.RequestPostDto;
 import com.JMThouseWeb.JMThouse.model.House;
 import com.JMThouseWeb.JMThouse.service.HouseService;
@@ -24,6 +26,7 @@ public class HouseController {
 	// 숙소 리스트 페이지 호출
 	@GetMapping("/list")
 	public String getHouseList(Model model) {
+		// TODO 리뷰 houseId로 찾아서 평균내서 들고오기
 		List<House> houseList = houseService.getHouseList();
 		model.addAttribute("houseList", houseList);
 		return "house/list_form";
@@ -49,10 +52,16 @@ public class HouseController {
 	}
 	
 	@PostMapping("/post")
-	public String postHouse(RequestPostDto requestPostDto) {
-		// TODO User와 함께 보내기
-		houseService.postHouse(requestPostDto);
+	public String postHouse(RequestPostDto requestPostDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+		houseService.postHouse(requestPostDto, principalDetail.getUser());
 		return "redirect:/house/list";
+	}
+	
+	// 숙소 정렬 필터
+	@GetMapping("/{address}")
+	public void getHouseListByAddress(@PathVariable String address, Model model) {
+		List<House> houseList = houseService.getHouseListByAddress(address);
+		model.addAttribute("houseList", houseList);
 	}
 	
 }

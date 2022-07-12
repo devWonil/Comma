@@ -40,12 +40,40 @@
 .bi-star-fill {
 	color: #ffc107;
 }
+
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 1.5em;
+	justify-content: space-around;
+	padding: 0 .2em;
+	text-align: center;
+	width: 5em;
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	color: transparent;
+	text-shadow: 0 0 0 #e0e0e0;
+	cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+	text-shadow: 0 0 0 #fdd826;
+}
+
+.star-rating label:hover, .star-rating label:hover ~ label {
+	text-shadow: 0 0 0 #fdd826;
 }
 </style>
-<!-- 숙소 정보-->
+
 <section class="py-5">
 	<div class="container px-4 px-lg-5 my-5">
 		<div class="row gx-4 gx-lg-5 align-items-center">
+			<input type="hidden" value="${house.id}" id="house-id">
 			<div class="col-md-6">
 				<img src="http://localhost:9090/upload/${house.image.imageUrl}"
 					width="500px" height="600px" />
@@ -61,8 +89,7 @@
 				<p class="lead">${house.infoText}</p>
 				<div class="d-flex">
 					<i class="bi bi-suit-heart flex-shrink-0"></i>&nbsp;&nbsp;
-					<button class="btn btn-outline-dark flex-shrink-0" type="button">
-						예약하기</button>
+					<button class="btn btn-outline-dark flex-shrink-0" type="button">예약하기</button>
 				</div>
 			</div>
 		</div>
@@ -90,7 +117,7 @@
 				<div class="fw-bold">${review.guestId.username}</div>
 				${review.content}
 			</div>
-			<!-- 호스트에게는 답글 달기 버튼 보이게 -->
+			<!-- 호스트에게는 답글 삭제 버튼 보이게 -->
 			<c:if test="">
 				<div style="cursor: pointer;">
 					<p p class="mb-5 float-right" style="cursor: pointer;"
@@ -116,7 +143,6 @@
 	</div>
 </section>
 
-<!-- 관련 숙소 뿌리기 -->
 <section class="py-5 bg-light">
 	<div class="container px-4 px-lg-5 mt-5">
 		<hr>
@@ -126,122 +152,37 @@
 		<br>
 		<div
 			class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Product image-->
-					<img class="card-img-top"
-						src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="...">
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Fancy Product</h5>
-							<!-- Product price-->
-							$40.00 - $80.00
-						</div>
-					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Sale badge-->
-					<div class="badge bg-dark text-white position-absolute"
-						style="top: 0.5rem; right: 0.5rem">Sale</div>
-					<!-- Product image-->
-					<img class="card-img-top"
-						src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="...">
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Special Item</h5>
-							<!-- Product reviews-->
-							<div
-								class="d-flex justify-content-center small text-warning mb-2">
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
+			<a href="/house/list"></a>
+			<c:forEach var="house" items="${houseList}">
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top"
+							src="http://localhost:9090/upload/${house.image.imageUrl}">
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">${house.name}</h5>
+								<!-- Product price-->
+								$40.00 - $80.00
 							</div>
-							<!-- Product price-->
-							<span class="text-muted text-decoration-line-through">$20.00</span>
-							$18.00
 						</div>
-					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Sale badge-->
-					<div class="badge bg-dark text-white position-absolute"
-						style="top: 0.5rem; right: 0.5rem">Sale</div>
-					<!-- Product image-->
-					<img class="card-img-top"
-						src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="...">
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Sale Item</h5>
-							<!-- Product price-->
-							<span class="text-muted text-decoration-line-through">$50.00</span>
-							$25.00
-						</div>
-					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Product image-->
-					<img class="card-img-top"
-						src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="...">
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Popular Item</h5>
-							<!-- Product reviews-->
-							<div
-								class="d-flex justify-content-center small text-warning mb-2">
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
+
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto" href="#">View Detail</a>
 							</div>
-							<!-- Product price-->
-							$40.00
 						</div>
 					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-						</div>
-					</div>
+
 				</div>
-			</div>
+
+			</c:forEach>
 		</div>
 	</div>
+
 </section>
 
 <script>
@@ -251,34 +192,38 @@
 		if (heartCheck) {
 			$(this).removeClass('bi-suit-heart');
 			$(this).addClass('bi-suit-heart-fill');
-			heartCheck = false;
 			addWishList();
+			heartCheck = false;
 		} else {
 			$(this).removeClass('bi-suit-heart-fill');
 			$(this).addClass('bi-suit-heart');
+			deleteWishList();
 			heartCheck = true;
 		}
 
 	});
-	
+
 	function addWishList() {
 		let data = {
-			houseId: document.querySelector("#house-id").value,
-			guestId: 1
-			//guestId: document.querySelector("#guest-id").value
+			id : document.querySelector("#house-id").value
 		}
-		console.log("houseId" + data.houseId);
-		
+		console.log("houseId" + data.id);
+
 		fetch("/api/house/wishList", {
-			method: "post",
-			headers: {
-				'content-type': 'application/json; charset=utf-8'
+			method : "post",
+			headers : {
+				'content-type' : 'application/json; charset=utf-8'
 			},
-			body: JSON.stringify(data)
-		})
-		.then(res => res.text())
-		.then(res => {
+			body : JSON.stringify(data)
 		});
 	}
+
+	function deleteWishList() {
+		let houseId = document.querySelector("#house-id").value;
+
+		fetch("/api/house/wishList/" + houseId, {
+			method : "delete"
+		});
+
+	}
 </script>
-<script src="/js/house/house.js"></script>
