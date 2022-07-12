@@ -24,6 +24,11 @@ public class UserController {
 		return "user/join_form";
 	}
 	
+	@GetMapping("/auth/host_join_form")
+	public String save1(User user) {
+		return "user/host_join_form";
+	}
+	
 	@GetMapping("/logout")
 	public String logout() {
 		return "redirect:/";
@@ -35,4 +40,9 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	@PostMapping("/auth/hostJoinProc")
+	public String saveHost(User user) {
+		userService.saveHost(user);
+		return "redirect:/";
+	}
 }

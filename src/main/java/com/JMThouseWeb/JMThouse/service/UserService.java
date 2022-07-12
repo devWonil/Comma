@@ -32,6 +32,21 @@ public class UserService {
 		}
 		return 1;
 	}
+	
+	@Transactional
+	public int saveHost(User user) {
+		try {
+			String rawPassword = user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			user.setPassword(encPassword);
+			user.setRole(RoleType.HOST);
+			userRepository.save(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 1;
+	}
 
 //	@Transactional(readOnly = true)
 //	public User login(User user) {

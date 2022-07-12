@@ -27,6 +27,15 @@ public class UserApiController  {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 	
+	@PostMapping("/api/host")
+	public ResponseDto<Integer> saveHost(@RequestBody User user) {
+		// DB (validation) ...
+		System.out.println("UserApiController 호출됨");
+		user.setRole(RoleType.HOST);
+		int result = userService.saveUser(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+	}
+	
 	// /blog/api/user/login
 	
 //	@PostMapping("/api/user/login")
