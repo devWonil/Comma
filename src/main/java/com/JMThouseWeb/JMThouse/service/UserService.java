@@ -40,7 +40,7 @@ public class UserService {
 //		// repository select 요청
 //		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 //	}
-}
+
 
 	@Transactional
 	public void updateUserInfo(User user) {
