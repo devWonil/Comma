@@ -30,7 +30,7 @@ body {
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h3 class="mb-3">Join</h3><br>
-				<form action="/auth/joinProc" method="post" class="needs-validation"
+				<form action="/auth/hostJoinProc" method="post" class="needs-validation"
 					novalidate>
 					<div class="row">
 						<div class="col-md-6 mb-3">

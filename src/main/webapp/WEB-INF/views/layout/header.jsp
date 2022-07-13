@@ -139,15 +139,17 @@ uri="http://www.springframework.org/security/tags" %>
                     <c:when test="${empty principal}">
                       <li><a class="user-btn" href="/auth/login_form">로그인</a></li>
                       <li><a class="user-btn" href="/auth/join_form">회원가입</a></li>
+                      <li><a class="user-btn" href="/auth/host_join_form">호스트 되기</a></li>
                     </c:when>
 
                     <c:otherwise>
                       <li><a class="user-btn" href="#">로그인</a></li>
                       <li><a class="user-btn" href="#">회원가입</a></li>
+                      <li><a class="user-btn" href="#">호스트 되기</a></li>
                     </c:otherwise>
                   </c:choose>
 
-                  <li><a class="user-btn" href="#">호스트 되기</a></li>
+                  
                   <li><a class="user-btn" href="#">예약 보기</a></li>
                 </ul>
               </li>
