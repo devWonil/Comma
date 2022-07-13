@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,11 +32,10 @@ public class Guest implements Serializable{
 	 * nested exception is org.hibernate.MappingException:
 	 * Composite-id class must implement Serializable: com.JMThouseWeb.JMThouse.model.Guest
 	 */
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	@Column(name="userId")
+	private int userId;
+
 	@OneToOne
 	@JoinColumn(name="userId")
 	private User user;

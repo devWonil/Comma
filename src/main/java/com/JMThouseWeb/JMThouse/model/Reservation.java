@@ -16,6 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.ColumnDefault;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,14 +36,17 @@ public class Reservation {
 
 	@ManyToOne
 	@JoinColumn(name = "guestId")
+	@JsonIgnoreProperties({"reservations"})
 	private Guest guestId;
 	
 	@ManyToOne
 	@JoinColumn(name = "hostId")
+	@JsonIgnoreProperties({"reservations"})
 	private Host hostId;
 	
 	@ManyToOne
 	@JoinColumn(name = "houseId")
+	@JsonIgnoreProperties({"reservations","hostId"})
 	private House houseId;
 
 	@Column(nullable = false)
@@ -48,9 +55,14 @@ public class Reservation {
 	@Column(nullable = false)
 	private Date checkOutDate;
 	
+	@ColumnDefault("1")
+	private int headCount;
+	
+	private String request;
+	
 	@Enumerated(EnumType.STRING)
 	private ReservationType approvalStatus; // 예약 승인 상태
 	
 	@Transient
-	private int[] tempIdBox = new int[3];
+	private int[] tempIdBox = new int[3]; // userid, hostid, houseid
 }

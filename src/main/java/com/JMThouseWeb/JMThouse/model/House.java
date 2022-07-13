@@ -57,6 +57,9 @@ public class House {
 	@JoinColumn(name = "imageId")
 	private Image image;
 	
+	@ColumnDefault("1")
+	private int capacity;
+	
 	@Lob
 	private String infoText;
 	
@@ -64,7 +67,6 @@ public class House {
 	private Timestamp creationDate;
 	
 	@OneToMany(mappedBy = "houseId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"houseId"})
 	private List<Reservation> reservations;
 	
 	@OneToMany(mappedBy = "houseId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -74,5 +76,8 @@ public class House {
 	@OneToMany(mappedBy ="house", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({"house"})
 	private List<BookedDate> bookedDates;
+	
+	
+	
 
 }
