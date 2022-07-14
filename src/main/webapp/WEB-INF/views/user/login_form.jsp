@@ -85,8 +85,8 @@ body {
 					<button class="btn btn-primary btn-block">Login</button>
 				</div>
 				<div class="text-center p-t-115">
-					<span class="txt1"> 계정이 없으신가요? </span> <a class="txt2"
-						href="/auth/join_form"> 가입하기 </a>
+					<span class="txt1"> 계정이 없으신가요? </span> <a href="https://kauth.kakao.com/oauth/authorize?client_id=1e0d85577dad20bb9104174f24adbfb7&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code"> 카카오 로그인 </a>
+  
 				</div>
 			</form>
 		</div>
