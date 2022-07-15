@@ -52,9 +52,9 @@
             <a  class="btn nav-link" ><span class="icon-user-circle"></span>&nbsp;&nbsp;user</a>
 			<div id="user-table" class="list-group" style="width: 180px; font-size: 20px; position: fixed; left: 70%; top: 6%;">
 			  	<input id="isUserTable" type="hidden" value =0 />
-						<button type="submit"  class="list-group-item list-group-item-action" ><span class="icon-drivers-license-o"></span>&nbsp;&nbsp;로그인</button>
-						<button type="submit"  class="list-group-item list-group-item-action" ><span class="icon-user-plus"></span>&nbsp;&nbsp;회원가입</button>
-						<button type="submit" class="list-group-item list-group-item-action" ><span class="icon-black-tie"></span>&nbsp;&nbsp;호스트 되기</button>
+						<a href="/auth/login_form"><button type="submit"  class="list-group-item list-group-item-action" ><span class="icon-drivers-license-o"></span>&nbsp;&nbsp;로그인</button></a>
+						<a href="/auth/join_form"><button type="submit"  class="list-group-item list-group-item-action" ><span class="icon-user-plus"></span>&nbsp;&nbsp;회원가입</button></a>
+						<a href="/auth/host_join_form"><button type="submit" class="list-group-item list-group-item-action" ><span class="icon-black-tie"></span>&nbsp;&nbsp;호스트 되기</button></a>
 						<button type="submit" class="list-group-item list-group-item-action" ><span class="icon-suitcase"></span>&nbsp;&nbsp;예약 확인</button>
 						<button type="submit" class="list-group-item list-group-item-action" ><span class="icon-users"></span>&nbsp;&nbsp;예약자 확인</button>
 			</div>
