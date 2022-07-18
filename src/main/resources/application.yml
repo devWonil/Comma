@@ -46,3 +46,6 @@ spring:
       
 file:
   path: C:/houseImgDir/upload/
+
+tenco:
+  key: asd1234!

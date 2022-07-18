@@ -18,17 +18,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"id", "connected_at", "properties", "kakao_account" })
-public class KakaoProfile {
-
+@JsonPropertyOrder({"id", "connected_at", "properties", "naver_account" })
+public class NaverProfile {
 	@JsonProperty("id")
 	private Long id;
 	@JsonProperty("connected_at")
 	private String connectedAt;
 	@JsonProperty("properties")
 	private Properties properties;
-	@JsonProperty("kakao_account")
-	private KakaoAccount kakaoAccount;
+	@JsonProperty("naver_account")
+	private NaverAccount naverAccount;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 	
@@ -72,7 +71,7 @@ public class KakaoProfile {
 	@JsonPropertyOrder({"profile_nickname_needs_agreement", "profile_image_needs_agreement", "profile", "has_email",
 			"email_needs_agreement", "is_email_valid", "is_email_verified", "email"})
 	@Data
-	public class KakaoAccount {
+	public class NaverAccount {
 		
 		@JsonProperty("profile_nickname_needs_agreement")
 		private Boolean profileNicknameNeedsAgreement;
@@ -129,5 +128,5 @@ public class KakaoProfile {
 				this.additionalProperties.put(name, value);
 			}
 		}
-	} // end of kakaoAccount class
+	} // end of naverAccount class
 }

@@ -1,10 +1,9 @@
 package com.JMThouseWeb.JMThouse.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.JMThouseWeb.JMThouse.model.RoleType;
 import com.JMThouseWeb.JMThouse.model.User;
@@ -55,6 +54,13 @@ public class UserService {
 //		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 //	}
 
+	@Transactional(readOnly = true)
+	public User searchUser(String username) {
+		User userEntity = userRepository.findByUsername(username).orElseGet(() -> {
+			return new User();
+		});
+		return userEntity;
+	}
 
 	@Transactional
 	public void updateUserInfo(User user) {

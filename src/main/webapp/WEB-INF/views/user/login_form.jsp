@@ -84,8 +84,19 @@ body {
 				<div class="mb-4">
 					<button class="btn btn-primary btn-block">Login</button>
 				</div>
+				<div class="social-login">
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=5364d58a9b4f08506ac63105133f69bb&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code"class="facebook btn d-flex justify-content-center align-items-center">
+                  <span class="icon-facebook mr-3"></span> Login with Kakao
+                </a>
+                <a href="https://openapi.naver.com/v1/nid/me?client_id=2cK0pKD9po4g6u193Yto&redirect_uri=http://localhost:9090/auth/naver/callback&response_type=code" class="twitter btn d-flex justify-content-center align-items-center">
+                  <span class="icon-twitter mr-3"></span> Login with  Naver
+                </a>
+                <a href="#" class="google btn d-flex justify-content-center align-items-center">
+                  <span class="icon-google mr-3"></span> Login with  Google
+                </a>
+              </div>
 				<div class="text-center p-t-115">
-					<span class="txt1"> 계정이 없으신가요? </span> <a href="https://kauth.kakao.com/oauth/authorize?client_id=1e0d85577dad20bb9104174f24adbfb7&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code"> 카카오 로그인 </a>
+					<span class="txt1"> 계정이 없으신가요? </span> <a href="/auth/join_form"> 새로만들기 </a>
   
 				</div>
 			</form>

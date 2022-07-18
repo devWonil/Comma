@@ -11,11 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -38,6 +40,8 @@ public class User {
 	
 	@CreationTimestamp
 	private Timestamp creationDate;
+	
+	private String oauth; // kakao, google, naver
 	
 	@Enumerated(EnumType.STRING)
 	private RoleType role;

@@ -48,7 +48,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/"><span class="icon-list-alt"></span>&nbsp;&nbsp;ssss</a>
           </li>
-          <li id="user-content" class="nav-item" style="position: relative; left: 700px;">
+          <li class="nav-item" style="position: relative; left: 300px;">
+            <a class="nav-link" >${principal.user.username} 님 환영합니다</a>
+          </li>
+          <li id="user-content" class="nav-item" style="position: relative; left: 300px;">
             <a  class="btn nav-link" ><span class="icon-user-circle"></span>&nbsp;&nbsp;user</a>
 			<div id="user-table" class="list-group" style="width: 180px; font-size: 20px; position: fixed; left: 70%; top: 6%;">
 			  	<input id="isUserTable" type="hidden" value =0 />
