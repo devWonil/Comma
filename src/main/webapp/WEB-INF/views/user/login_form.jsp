@@ -88,7 +88,7 @@ body {
                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=5364d58a9b4f08506ac63105133f69bb&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code"class="facebook btn d-flex justify-content-center align-items-center">
                   <span class="icon-facebook mr-3"></span> Login with Kakao
                 </a>
-                <a href="https://openapi.naver.com/v1/nid/me?client_id=2cK0pKD9po4g6u193Yto&redirect_uri=http://localhost:9090/auth/naver/callback&response_type=code" class="twitter btn d-flex justify-content-center align-items-center">
+                <a href="https://nid.naver.com/oauth2.0/authorize?client_id=2cK0pKD9po4g6u193Yto&redirect_uri=http://localhost:9090/auth/naver/callback&response_type=code" class="twitter btn d-flex justify-content-center align-items-center">
                   <span class="icon-twitter mr-3"></span> Login with  Naver
                 </a>
                 <a href="#" class="google btn d-flex justify-content-center align-items-center">
