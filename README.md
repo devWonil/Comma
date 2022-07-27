@@ -1,5 +1,5 @@
-![image](https://user-images.githubusercontent.com/102580743/181183965-fc5d9834-bc84-44f2-8101-28d6fd12e8fd.png)
-# 숙박 서비스 웹 구현 팀 프로젝트
+ 
+# 🏨숙박 서비스 웹 구현 팀 프로젝트🏖️
 
 ## 숙박 서비스 플랫폼 airBnb를 참고하여 만든 프로젝트입니다.
 
